@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Fenêtre principale"  Height="470" Width="1067">
+        Title="Fenêtre principale" Height="470" Width="1067">
+    
     <Grid>
         <Frame x:Name="MainFrame" Content="Frame"/>
-
     </Grid>
 </Window>

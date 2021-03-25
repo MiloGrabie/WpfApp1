@@ -22,7 +22,6 @@ namespace WpfApp1.ExplorateurVoituresDir
     {
         public ExploVoiture()
         {
-
             InitializeComponent();
             this.DataContext = new VMExploVoiture();
         }

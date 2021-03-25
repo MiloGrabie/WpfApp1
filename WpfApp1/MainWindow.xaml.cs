@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.ExplorateurVoituresDir;
+using WpfApp1.PageExmpleDir;
 
 namespace WpfApp1
 {
@@ -24,7 +25,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new ExploVoiture();
+            MainFrame.Content = new Exemple();
         }
     }
 }

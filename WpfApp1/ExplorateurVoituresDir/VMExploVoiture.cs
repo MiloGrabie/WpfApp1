@@ -19,6 +19,7 @@ namespace WpfApp1.ExplorateurVoituresDir
             InitDataGrid();
         }
 
+
         #region Ajout Voiture
 
         public Command Ajouter { get; set; }
@@ -26,9 +27,9 @@ namespace WpfApp1.ExplorateurVoituresDir
         private void InitCommand()
         {
             Ajouter = new Command(Ajouter_Func);
-        }
+		}
 
-        private void Ajouter_Func()
+		private void Ajouter_Func()
         {
 			DataAcessLayer.DataContext.Voiture.Add(new Voiture
 			{
@@ -154,9 +155,10 @@ namespace WpfApp1.ExplorateurVoituresDir
 			{
 				rowList.Add(new VMExploVoiture_Row(voiture));
 			}
-			if (RowCollectionView != null)
-				RowCollectionView.Refresh();
-		}
+
+            if (RowCollectionView != null)
+                RowCollectionView.Refresh();
+        }
 
         public VMExploVoiture_Row SelectedItem { get; set; }
 
