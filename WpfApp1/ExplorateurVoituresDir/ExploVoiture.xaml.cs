@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.ExplorateurVoituresDir.FilterDir;
 
 namespace WpfApp1.ExplorateurVoituresDir
 {
@@ -24,6 +25,17 @@ namespace WpfApp1.ExplorateurVoituresDir
         {
             InitializeComponent();
             this.DataContext = new VMExploVoiture();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                (DataContext as VMExploVoiture).FilterManager.OpenContextMenu(sender as Button);
+            }
+            catch (Exception error)
+            {
+            }
         }
     }
 }

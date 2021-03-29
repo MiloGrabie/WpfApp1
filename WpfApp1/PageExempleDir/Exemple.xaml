@@ -9,7 +9,14 @@
       Title="Exemple">
 
     <Grid Background="White">
-        <DataGrid ItemsSource="{Binding ListFruitsView}" Margin="58,32,98,91"/>
+        <DataGrid ItemsSource="{Binding ListFruitsView}" Margin="58,32,141,240"/>
         <Button Content="Ajouter Pomme" Command="{Binding AjouterPomme}" HorizontalAlignment="Left" Margin="232,390,0,0" VerticalAlignment="Top" />
+        <StackPanel HorizontalAlignment="Left" Height="100" Margin="179,259,0,0" VerticalAlignment="Top" Width="100">
+            <CheckBox Content="Test"/>
+            <CheckBox Content="Test"/>
+            <CheckBox Content="Test"/>
+            <CheckBox Content="Test"/>
+            <CheckBox Content="Test"/>
+        </StackPanel>
     </Grid>
 </Page>

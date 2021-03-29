@@ -25,7 +25,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Content = new Exemple();
+            MainFrame.Content = new ExploVoiture();
         }
     }
 }

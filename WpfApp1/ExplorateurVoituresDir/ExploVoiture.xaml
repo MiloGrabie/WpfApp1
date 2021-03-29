@@ -7,6 +7,24 @@
       mc:Ignorable="d"
       Title="ExploVoiture" d:DesignHeight="470" d:DesignWidth="1067">
 
+    <Page.Resources>
+        <Style x:Key="StyleColumnHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <DataTemplate x:Key="HeaderTemplate">
+            <Grid Background="White" Margin="-4" Name="DockPanelHeader">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="{TemplateBinding Content}" Padding="4" HorizontalAlignment="Left"  Grid.Column="0"/>
+                <Button BorderThickness="0" Background="White" Width="30" HorizontalAlignment="Right" Grid.Column="1" Click="Button_Click">
+                    <Image Source="FilterImg.png" Width="13" Stretch="Uniform"/>
+                </Button>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -16,11 +34,11 @@
         <Label Content="Voitures :" HorizontalAlignment="Left" Margin="10,10,0,10" FontSize="20" Width="92"/>
         <DataGrid Margin="10" Grid.Row="1" ItemsSource="{Binding RowCollectionView}" SelectedItem="{Binding SelectedItem}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Marque" Binding="{Binding Marque}"/>
-                <DataGridTextColumn Header="Modèle" Binding="{Binding Modele}"/>
-                <DataGridTextColumn Header="Couleur" Binding="{Binding Couleur}"/>
-                <DataGridTextColumn Header="Vitesse Max." Binding="{Binding VMax}"/>
-                <DataGridTextColumn Header="Prix" Binding="{Binding Prix}"/>
+                <DataGridTextColumn Header="Marque" Binding="{Binding Marque}" HeaderTemplate="{StaticResource HeaderTemplate}" HeaderStyle="{StaticResource StyleColumnHeader}"/>
+                <DataGridTextColumn Header="Modèle" Binding="{Binding Modele}" HeaderTemplate="{StaticResource HeaderTemplate}" HeaderStyle="{StaticResource StyleColumnHeader}"/>
+                <DataGridTextColumn Header="Couleur" Binding="{Binding Couleur}" HeaderTemplate="{StaticResource HeaderTemplate}" HeaderStyle="{StaticResource StyleColumnHeader}"/>
+                <DataGridTextColumn Header="Vitesse Max." Binding="{Binding VMax}" HeaderTemplate="{StaticResource HeaderTemplate}" HeaderStyle="{StaticResource StyleColumnHeader}"/>
+                <DataGridTextColumn Header="Prix" Binding="{Binding Prix}" HeaderTemplate="{StaticResource HeaderTemplate}" HeaderStyle="{StaticResource StyleColumnHeader}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Marque :" HorizontalAlignment="Left" Margin="10,0,0,13" Grid.Row="2" VerticalAlignment="Bottom" Height="25" Width="60"/>
@@ -33,6 +51,30 @@
         <TextBox HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="20" Margin="631,0,0,15" Grid.Row="2" TextWrapping="Wrap" Text="{Binding VoitureVMax}" VerticalAlignment="Bottom" Width="107"/>
         <Label Content="Prix :" HorizontalAlignment="Left" Margin="741,0,0,13" Grid.Row="2" VerticalAlignment="Bottom" Height="25" Width="42"/>
         <TextBox HorizontalAlignment="Left" VerticalContentAlignment="Center" Height="20" Margin="788,0,0,15" Grid.Row="2" TextWrapping="Wrap" Text="{Binding VoiturePrix}" VerticalAlignment="Bottom" Width="107"/>
-        <Button Content="Ajouter" Command="{Binding Ajouter}" HorizontalAlignment="Right" Margin="0,0,10,15" Grid.Row="2" VerticalAlignment="Bottom" Width="75" Height="20"/>
+        <Button Content="Ajouter" Command="{Binding Ajouter}" HorizontalAlignment="Right" Margin="0,0,10,15" Grid.Row="2" VerticalAlignment="Bottom" Width="75" Height="20">
+
+            <Button.ContextMenu>
+                <ContextMenu Name="cm" StaysOpen="true">
+                    <MenuItem Header="File">
+                        
+                    </MenuItem>
+                    <MenuItem Header="Save"/>
+                    <MenuItem Header="SaveAs"/>
+                    <MenuItem Header="Recent Files">
+                        <MenuItem Header="ReadMe.txt"/>
+                        <MenuItem Header="Schedule.xls"/>
+                    </MenuItem>
+                    <Grid>
+                        <Label>Test</Label>
+                        <CheckBox Content="test" />
+                    </Grid>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+        
+        
+
+
+
     </Grid>
 </Page>

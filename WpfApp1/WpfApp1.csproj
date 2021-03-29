@@ -99,6 +99,11 @@
     <Compile Include="ExplorateurVoituresDir\ExploVoiture.xaml.cs">
       <DependentUpon>ExploVoiture.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExplorateurVoituresDir\FilterDir\FilterDataGrid.cs" />
+    <Compile Include="ExplorateurVoituresDir\FilterDir\FilterManager.cs" />
+    <Compile Include="ExplorateurVoituresDir\FilterDir\UC_RowSelection.xaml.cs">
+      <DependentUpon>UC_RowSelection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ExplorateurVoituresDir\VMExploVoiture.cs" />
     <Compile Include="ExplorateurVoituresDir\VMExploVoiture_Row.cs" />
     <Compile Include="PageExempleDir\Exemple.xaml.cs">
@@ -107,6 +112,10 @@
     <Compile Include="PageExempleDir\VMExemple.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="ExplorateurVoituresDir\ExploVoiture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExplorateurVoituresDir\FilterDir\UC_RowSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,6 +165,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ExplorateurVoituresDir\FilterImg.png" />
     <Content Include="LocalDataBaseDir\Database.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

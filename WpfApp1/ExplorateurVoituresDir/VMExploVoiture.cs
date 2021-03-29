@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
 using WpfApp1.DataContextEF_Dir;
+using WpfApp1.ExplorateurVoituresDir.FilterDir;
 
 namespace WpfApp1.ExplorateurVoituresDir
 {
@@ -45,7 +48,7 @@ namespace WpfApp1.ExplorateurVoituresDir
 			OnPropertyChanged("RowCollectionView");
 		}
 
-		private string voitureMarque;
+        private string voitureMarque;
 		private string voitureModele;
 		private string voitureCouleur;
 		private int voitureVMax;
@@ -136,18 +139,21 @@ namespace WpfApp1.ExplorateurVoituresDir
         private ICollectionView rowCollectionView;
         public List<VMExploVoiture_Row> RowList { get => rowList; set => rowList = value; }
         public ICollectionView RowCollectionView { get => rowCollectionView; set => rowCollectionView = value; }
+		public FilterManager FilterManager;
 
-        private void InitDataGrid()
+		private void InitDataGrid()
         {
             RowList = new List<VMExploVoiture_Row>();
 
 			UpdateDataGrid();
 
 			rowCollectionView = CollectionViewSource.GetDefaultView(RowList);
+			FilterManager = new FilterManager(rowCollectionView);
 			OnPropertyChanged("RowCollectionView");
 		}
 
-		private void UpdateDataGrid()
+
+        private void UpdateDataGrid()
         {
 			rowList.Clear();
 			List<Voiture> voitures = DataAcessLayer.DataContext.Voiture.ToList();
@@ -162,6 +168,8 @@ namespace WpfApp1.ExplorateurVoituresDir
 
         public VMExploVoiture_Row SelectedItem { get; set; }
 
-        #endregion
-    }
+
+
+		#endregion
+	}
 }
