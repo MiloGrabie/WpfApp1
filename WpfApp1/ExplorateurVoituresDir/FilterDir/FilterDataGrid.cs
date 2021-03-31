@@ -46,7 +46,6 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
             this.ItemsSource = menuItems;
         }
 
-
         private void UpdateColumn()
         {
             Manager.RowCollectionView.Refresh();
@@ -140,7 +139,7 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
 
             CreateCheckBox();
             CheckBoxList.ForEach(a => RowSelection.MainStackPanel.Children.Add(a));
-            Manager.RowCollectionView.Filter += new FilterEventArgs(RowSelectionFilter);
+            Manager.CollectionViewSource.Filter += new FilterEventHandler(RowSelection_Filter);
 
             //menuItems.Add(grid);
             menuItems.Add(RowSelection);
@@ -209,23 +208,21 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
                 RowSelection.AllSelection.IsChecked = true;
         }
 
-        private void RowSelectionFilter(object sender, FilterEventArgs e)
+        private void RowSelection_Filter(object sender, FilterEventArgs e)
         {
-            Object obj = e.Item;
             if (!DoRowSel_Filter)
                 return;
 
+            Object obj = e.Item;
             object value = obj.GetType().GetProperty(DataBindProp)?.GetValue(obj);
-            if (CheckBoxList.Any(a => a.Content.ToString() == value?.ToString() && (bool)a.IsChecked))
-                e.Accepted = true;
-            else
+            if (CheckBoxList.Any(a => a.Content.ToString() == value?.ToString() && !(bool)a.IsChecked))
                 e.Accepted = false;
+            //else
+            //    e.Accepted = false;
             
         }
 
-
         #endregion
-
 
         #endregion
 

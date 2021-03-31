@@ -138,6 +138,7 @@ namespace WpfApp1.ExplorateurVoituresDir
 		private List<VMExploVoiture_Row> rowList;
         private ICollectionView rowCollectionView;
         public List<VMExploVoiture_Row> RowList { get => rowList; set => rowList = value; }
+        public CollectionViewSource CollectionViewSource { get; set; }
         public ICollectionView RowCollectionView { get => rowCollectionView; set => rowCollectionView = value; }
 		public FilterManager FilterManager;
 
@@ -147,8 +148,10 @@ namespace WpfApp1.ExplorateurVoituresDir
 
 			UpdateDataGrid();
 
-			rowCollectionView = CollectionViewSource.GetDefaultView(RowList);
-			FilterManager = new FilterManager(rowCollectionView);
+			CollectionViewSource = new CollectionViewSource() { Source = RowList };
+
+			rowCollectionView = CollectionViewSource.View;
+			FilterManager = new FilterManager(rowCollectionView, CollectionViewSource);
 			OnPropertyChanged("RowCollectionView");
 		}
 

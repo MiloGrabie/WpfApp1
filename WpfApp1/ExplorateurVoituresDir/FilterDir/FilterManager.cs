@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace WpfApp1.ExplorateurVoituresDir.FilterDir
 {
@@ -14,10 +15,12 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
 
         List<FilterDataGrid> FilterDataGrids = new List<FilterDataGrid>();
         public ICollectionView RowCollectionView { get; set; }
+        public CollectionViewSource CollectionViewSource { get; }
 
-        public FilterManager(ICollectionView rowCollectionView)
+        public FilterManager(ICollectionView rowCollectionView, CollectionViewSource collectionViewSource)
         {
             RowCollectionView = rowCollectionView;
+            CollectionViewSource = collectionViewSource;
             InitFilter();
         }
 
