@@ -26,7 +26,7 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
 
         private void InitFilter()
         {
-            foreach (var column in ((System.Windows.Data.ListCollectionView)RowCollectionView).ItemProperties.Select(a => a.Name))
+            foreach (var column in ((ListCollectionView)RowCollectionView).ItemProperties.Select(a => a.Name))
                 FilterDataGrids.Add(new FilterDataGrid(column, this));
         }
 

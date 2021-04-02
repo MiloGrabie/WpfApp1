@@ -151,7 +151,9 @@ namespace WpfApp1.ExplorateurVoituresDir
 			CollectionViewSource = new CollectionViewSource() { Source = RowList };
 
 			rowCollectionView = CollectionViewSource.View;
+
 			FilterManager = new FilterManager(rowCollectionView, CollectionViewSource);
+
 			OnPropertyChanged("RowCollectionView");
 		}
 

@@ -18,6 +18,7 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
 
         public string DataBindProp;
         public List<FrameworkElement> menuItems { get; } = new List<FrameworkElement>();
+
         public FilterManager Manager;
 
         public FilterDataGrid(string dataBindProp, FilterManager filterManager)
@@ -138,11 +139,18 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
             menuItems.Add(new Separator());
 
             CreateCheckBox();
+            Manager.RowCollectionView.CollectionChanged += RowCollectionView_CollectionChanged;
+
             CheckBoxList.ForEach(a => RowSelection.MainStackPanel.Children.Add(a));
             Manager.CollectionViewSource.Filter += new FilterEventHandler(RowSelection_Filter);
 
             //menuItems.Add(grid);
             menuItems.Add(RowSelection);
+        }
+
+        private void RowCollectionView_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+
         }
 
         private void AllSelection_Click(object sender, RoutedEventArgs e)
@@ -167,11 +175,11 @@ namespace WpfApp1.ExplorateurVoituresDir.FilterDir
             CheckBoxList = new List<CheckBox>();
 
             var dataList = new List<string>();
-            foreach (var item in Manager.RowCollectionView)
+            foreach (var ligne in Manager.RowCollectionView)
             {
                 try
                 {
-                    dataList.Add(item.GetType().GetProperty(DataBindProp).GetValue(item)?.ToString());
+                    dataList.Add(ligne.GetType().GetProperty(DataBindProp).GetValue(ligne)?.ToString());
                 }
                 catch { }
             }
